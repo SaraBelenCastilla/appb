@@ -36,13 +36,13 @@ exports.getPerfil = (req,res,next)=>{
 exports.getUpdatePerfiles =(req,res,next)=>{
 
  
-    let {Nombre,Apellidos,Direccion,_id} = req.body;
+    let {Nombre,Foto,_id} = req.body;
      
     console.log(req.body)
  
    
     try {
-      Perfiles.updateOne({_id: _id}, {$set: {Nombre:Nombre,Src:Src} }).then(result=>{
+      Perfiles.updateOne({_id: _id}, {$set: {Nombre:Nombre,Foto:Foto} }).then(result=>{
         res.json({status:'success'});
     })
     } catch (err) {
