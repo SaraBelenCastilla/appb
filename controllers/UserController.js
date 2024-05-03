@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Usuarios = mongoose.model('Usuarios',{ Usuario:String,Password:String })
 
-const LINK_CLIENTE_LOGIN = process.env.LINK_CLIENTE_LOGIN ||'http://localhost:5173/login'
+const LINK_CLIENTE = process.env.LINK_CLIENTE ||'http://localhost:5173/login'
 exports.getUser = (req,res)=>{
   
     let {Usuario,Password} = req.body
@@ -40,7 +40,7 @@ exports.getUser = (req,res)=>{
    const usuario = new Usuarios ({ Usuario :Usuario ,Password :Password });
     usuario.save().then(doc=>{
      console.log('dato insertado correctamente:+doc');
-     res.redirect(LINK_CLIENTE_LOGIN)
+     res.redirect(LINK_CLIENTE)
    })
   } catch (err) {
     console.error('error en el find:'+err.stack)

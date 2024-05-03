@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Consultas =mongoose.model('Consultas',{Nombre:String,Motivo:String,Telefono:Number,Email:String,Usuario:String})
 
-const LINK_CLIENTE_CONSULTAS = process.env.LINK_CLIENTE_CONSULTAS ||'http://localhost:5173/Consultas'
+const LINK_CLIENTE = process.env.LINK_CLIENTE ||'http://localhost:5173/'
 exports.getAllConsultas =(req,res,next)=>{
   
   
@@ -22,7 +22,7 @@ exports.getCreateConsultas = (req,res,next)=>{
     const consultas = new Consultas({ Nombre:Nombre,Motivo:Motivo,Telefono:Telefono,Email:Email,Usuario:Usuario });
     consultas.save().then(doc=>{
       console.log('dato insertado correctamente:+doc');
-      res.redirect(LINK_CLIENTE_CONSULTAS)
+      res.redirect(LINK_CLIENTE)
     })
   } catch (err) {
     console.error('error en el find'+err.stack)
